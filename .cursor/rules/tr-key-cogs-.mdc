@@ -1,0 +1,275 @@
+---
+alwaysApply: true
+---
+
+<tr
+//                 key={`cogs-${product.sku}`}
+//                 className="border-b border-slate-100 last:border-0"
+//               >
+//                 <td className="px-4 py-3">
+//                   <div className="max-w-[450px]">
+//                     <p className="font-medium text-slate-900">
+//                       {product.productName || product.sku}
+//                     </p>
+//                   </div>
+//                 </td>
+
+//                 <td className="px-4 py-3 text-sm text-slate-600">
+//                   {product.sku}
+//                 </td>
+
+//                 <td className="px-4 py-3 text-right text-sm font-medium text-slate-900">
+//                   ₹{Number(product.sellingPrice ?? 0).toLocaleString("en-IN")}
+//                 </td>
+
+//                 <td className="px-4 py-3">
+//                   <input
+//                     type="number"
+//                     min="0"
+//                     step="0.01"
+//                     defaultValue={currentCost || ""}
+//                     id={`cogs-${product.sku}`}
+//                     placeholder="Enter cost"
+//                     className="w-28 rounded-lg border border-slate-200 px-3 py-2 text-right text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-100"
+//                   />
+//                   {!savedCost && (
+//   <p className="mt-1 text-xs font-medium text-orange-600">
+//     ⚠ COGS missing
+//   </p>
+// )}
+//                 </td>
+
+//                 <td className="px-4 py-3 text-right">
+//                   <button
+//                     type="button"
+//                     onClick={() => {
+//                       const input = document.getElementById(
+//                         `cogs-${product.sku}`
+//                       ) as HTMLInputElement | null;
+
+//                       const cost = Number(input?.value ?? 0);
+
+//                       if (!Number.isFinite(cost) || cost < 0) {
+//                         return;
+//                       }
+
+//                       const updatedCosts = [
+//                         ...productCosts.filter(
+//                           (item) =>
+//                             item.sku.trim().toLowerCase() !==
+//                             product.sku.trim().toLowerCase()
+//                         ),
+//                         {
+//                           sku: product.sku,
+//                           cost,
+//                         },
+//                       ];
+
+//                       setProductCosts(updatedCosts);
+//                       saveProductCosts(updatedCosts);
+//                     }}
+//                     className="rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
+//                   >
+//                     Save
+//                   </button>
+//                 </td>
+//               </tr>
+//             );
+//           })}
+//         </tbody>
+//       </table>
+//     </div>
+//   </div>
+// </section>
+
+// {/* Search */}
+// <div className="mb-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"></div>
+//         {/* Search */}
+//         <div className="mb-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+//           <div className="relative">
+//             <input
+//               type="text"
+//               value={search}
+//               onChange={(e) => setSearch(e.target.value)}
+//               placeholder="Search by product, SKU or category..."
+//               className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-100"
+//             />
+//           </div>
+//         </div>
+
+//         {/* Products Table */}
+//         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+//           <div className="overflow-x-auto">
+//             <table className="w-full min-w-[1100px]">
+//               <thead>
+//                 <tr className="border-b border-slate-200 bg-slate-50">
+//                   <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Product
+//                   </th>
+//                   <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     SKU
+//                   </th>
+//                   <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Category
+//                   </th>
+//                   <th className="px-5 py-4 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Selling Price
+//                   </th>
+//                   <th className="px-5 py-4 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     COGS
+//                   </th>
+//                   <th className="px-5 py-4 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Units Sold
+//                   </th>
+//                   <th className="px-5 py-4 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Revenue
+//                   </th>
+//                   <th className="px-5 py-4 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                   GROSS PROFIT
+//                   </th>
+//                   <th className="px-5 py-4 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Stock
+//                   </th>
+//                   <th className="px-5 py-4 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">
+//                     Status
+//                   </th>
+//                 </tr>
+//               </thead>
+
+//               <tbody>
+//               {filteredProducts.map((product) => {
+//   const inventoryMatch = inventoryRows.find(
+//     (row) =>
+//       row.sku.trim().toLowerCase() === product.sku.trim().toLowerCase()
+//   );
+
+//   const stock = inventoryMatch?.quantity ?? product.stock;
+//   const listing = listingBySku.get(product.sku.trim().toLowerCase());
+//   const sellingPrice =
+//   listing?.sellingPrice ??
+//   product.sellingPrice ??
+//   (product.unitsSold > 0
+//     ? product.revenue / product.unitsSold
+//     : 0);
+
+//     const cogs = getProductCost(productCosts, product.sku);
+
+//                       const status =
+//                       stock <= 5
+//                         ? "Critical"
+//                         : stock <= 10
+//                           ? "Low Stock"
+//                           : "Active";
+
+//                   return (
+//                     <tr
+//                       key={product.id}
+//                       className="border-b border-slate-100 last:border-0 hover:bg-slate-50"
+//                     >
+//                       <td className="px-5 py-5">
+//                         <div>
+//                           <p className="font-semibold text-slate-900">
+//                           {listing?.productName ?? product.name}
+//                           </p>
+//                           <p className="mt-1 text-xs text-slate-400">
+//                             Product ID: {product.id}
+//                           </p>
+//                         </div>
+//                       </td>
+
+//                       <td className="px-5 py-5">
+//                         <span className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600">
+//                           {product.sku}
+//                         </span>
+//                       </td>
+
+//                       <td className="px-5 py-5 text-sm text-slate-600">
+//                         {product.category}
+//                       </td>
+
+//                       <td className="px-5 py-5 text-right text-sm font-medium text-slate-900">
+//                         ₹{sellingPrice.toLocaleString("en-IN")}
+//                       </td>
+
+//                       <td className="px-5 py-5 text-right text-sm text-slate-600">
+//                       <input
+//   type="number"
+//   min="0"
+//   value={cogs}
+//   onChange={(event) => {
+//     const value = Number(event.target.value);
+
+//     setProductCosts(
+//       setProductCost(
+//         productCosts,
+//         product.sku,
+//         Number.isFinite(value) && value >= 0 ? value : 0
+//       )
+//     );
+//   }}
+//   className="w-20 rounded-md border border-slate-200 px-2 py-1 text-right text-sm text-slate-700 focus:border-orange-500 focus:outline-none"
+// />
+// </td>
+
+//                       <td className="px-5 py-5 text-right text-sm text-slate-700">
+//                         {product.unitsSold.toLocaleString("en-IN")}
+//                       </td>
+
+//                       <td className="px-5 py-5 text-right text-sm font-medium text-slate-900">
+//                         ₹{product.revenue.toLocaleString("en-IN")}
+//                       </td>
+
+//                       <td className="px-5 py-5 text-right text-sm font-semibold text-emerald-600">
+//                         ₹{product.profit.toLocaleString("en-IN")}
+//                       </td>
+
+//                       <td className="px-5 py-5 text-center text-sm font-medium text-slate-700">
+//                       {stock}
+//                       </td>
+
+//                       <td className="px-5 py-5 text-center">
+//                         <span
+//                           className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+//                             status === "Critical"
+//                               ? "bg-red-50 text-red-600"
+//                               : status === "Low Stock"
+//                                 ? "bg-orange-50 text-orange-600"
+//                                 : "bg-emerald-50 text-emerald-600"
+//                           }`}
+//                         >
+//                           {status}
+//                         </span>
+//                       </td>
+//                     </tr>
+//                   );
+//                 })}
+
+//                 {filteredProducts.length === 0 && (
+//                   <tr>
+//                     <td
+//                       colSpan={10}
+//                       className="px-5 py-12 text-center text-sm text-slate-500"
+//                     >
+//                       No products found.
+//                     </td>
+//                   </tr>
+//                 )}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+
+//         {/* Footer */}
+//         <div className="mt-4 text-sm text-slate-500">
+//           Showing{" "}
+//           <span className="font-medium text-slate-700">
+//             {filteredProducts.length}
+//           </span>{" "}
+//           of{" "}
+//           <span className="font-medium text-slate-700">
+//           {products.length}
+//           </span>{" "}
+//           products
+//         </div>
+//       </main>
+//     </div>
